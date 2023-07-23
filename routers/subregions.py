@@ -1,0 +1,5 @@
+['Caribbean', 'South America', 'Northern America', 'Central America']
+['Eastern Asia', 'Central Asia', 'South-Eastern Asia', 'Western Asia', 'Southern Asia']
+['Southern Europe', 'Northern Europe', 'Eastern Europe', 'Western Europe']
+['Eastern Africa', 'Western Africa', 'Northern Africa', 'Middle Africa', 'Southern Africa']
+['Polynesia', 'Melanesia', 'Micronesia', 'Australia and New Zealand']
