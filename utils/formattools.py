@@ -1,5 +1,6 @@
 from countryinfo import CountryInfo
 from .regions import Region
+from .subregions import Subregion
 from flag import flag
 import datetime
 
@@ -22,11 +23,10 @@ class FormatCountryTools:
     @classmethod
     def format_timezone(self, tz : str, ):
         difference = tz[3::]
-        sign_dif, hours, minutes = difference[0].replace('−', '-'), difference[1:3], difference[4::]
-
         if difference == '' or None:
             return (0, 0)
-        
+
+        sign_dif, hours, minutes = difference[0].replace('−', '-'), difference[1:3], difference[4::]
         sign_dif = int(f'{sign_dif}1')
         hours = int(hours if hours else 0) * sign_dif
         minutes = int(minutes if minutes else 0) * sign_dif
@@ -76,3 +76,28 @@ class FormatRegionTools:
                 FormatCountryTools(country=country).country_fromat(emoji=emoji), 
             self.countries
         ))
+    
+class FormatSubregionTools:
+    def __init__(self, region : str):
+        self.region_name = region
+        self.region = Subregion(name=region)
+        self.subregions_names = self.region.get_subregions_names()
+        self.subregions = self.region.get_subregions()
+        
+    def subregion_format(self, emoji : bool = True):
+        subregions = list(map(
+            lambda subregion: 
+                { 
+                    subregion : list(map(
+                        lambda country : FormatCountryTools(country=country).country_fromat(emoji=emoji),
+                        self.subregions[subregion]
+                    ))
+                }, 
+            self.subregions_names
+        ))
+
+        return {
+            'region' : self.region_name,
+            'subregions names' : self.subregions_names,
+            'subregions':subregions
+        }
