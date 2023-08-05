@@ -1,4 +1,7 @@
-from . import client
+from . import app
+from fastapi.testclient import TestClient
+
+client = TestClient(app=app)
 
 def test_timezone():
     response = client.get('/country/united states')
