@@ -16,7 +16,7 @@ async def root (request : Request):
     ip_info = DbIpCity.get(ip_client, api_key='free')
 
     if ip_info.country == 'ZZ':
-        raise HTTPException(status_code=400, detail='the client ip is a private ip or localhost')
+        raise HTTPException(status_code=200, detail='the client ip is a private ip or localhost')
     
     tools = FormatCountryTools(CountryInfo(ip_info.country))
     return tools.country_fromat()
