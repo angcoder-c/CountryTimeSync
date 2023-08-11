@@ -1,6 +1,9 @@
-# CountryTimeSync
+# CountryTimeSync 🌎
 
 Fastapi based REST API that returns the current time in all parts of the world, divided into countries, regions, and subregions.
+
+[#Docs](https://github.com/angcoder-c/CountryTimeSync/blob/main/routers/endpoints.md)
+
 
 # Installation Guide
 
