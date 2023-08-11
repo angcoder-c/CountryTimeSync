@@ -12,12 +12,15 @@ app.include_router(subregions.router)
 
 @app.get('/')
 async def root (request : Request):
+    # get ip information
     ip_client = request.client.host
     ip_info = DbIpCity.get(ip_client, api_key='free')
 
+    # country validate
     if ip_info.country == 'ZZ':
         raise HTTPException(status_code=200, detail='the client ip is a private ip or localhost')
     
+    # data formatter
     tools = FormatCountryTools(CountryInfo(ip_info.country))
     return tools.country_fromat()
 

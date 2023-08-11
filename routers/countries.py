@@ -10,6 +10,7 @@ router = APIRouter(
 
 @router.get('/{country}')
 async def get_country_time(country : str = None, emoji : int | None = Query(default=1)):
+    # if the country is not valid, it returns a 404 error code
     try:
         country_info = CountryInfo(country)
         country_info.info()

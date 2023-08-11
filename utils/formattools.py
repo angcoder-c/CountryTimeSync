@@ -21,6 +21,8 @@ class FormatCountryTools:
         ))
     
     @classmethod
+    # Limpiador de datos UTC
+    # UTC±HH:MM
     def format_timezone(self, tz : str, ):
         difference = tz[3::]
         if difference == '' or None:
@@ -34,6 +36,7 @@ class FormatCountryTools:
         return (hours, minutes)
     
     @classmethod
+    # timezone transfer
     def set_timezone (self, tz, time : datetime.datetime):
         hour, min = FormatCountryTools.format_timezone(tz)
         tz = datetime.timezone(datetime.timedelta(hours=hour, minutes=min))

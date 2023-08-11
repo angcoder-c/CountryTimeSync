@@ -7,9 +7,12 @@ class Region:
         self._all_countries = CountryInfo().all()
 
         def filter_region(country : str):
+            #remove missing data
             with suppress(KeyError): 
                 return self._all_countries[country]['region'] == self._region
 
+
+        #filter countries by specific region
         self._region_countires = map(CountryInfo,filter(filter_region, self._all_countries))
     
     def get_region_name(self):
